@@ -8,17 +8,17 @@ type DoublyLinkedList struct {
 	length int
 }
 
-func newDoublyLinkedList(elements ...interface{}) *DoublyLinkedList {
+func NewDoublyLinkedList(elements ...interface{}) *DoublyLinkedList {
 	list := new(DoublyLinkedList)
 	for _, elem := range elements {
-		list.addToEnd(elem)
+		list.AddToEnd(elem)
 	}
 	return list
 }
 
-func (list *DoublyLinkedList) addToFront(element interface{}) {
-	node := newNode(element)
-	if list.isEmpty() {
+func (list *DoublyLinkedList) AddToFront(element interface{}) {
+	node := createNode(element)
+	if list.IsEmpty() {
 		list.tail = node
 	} else {
 		list.head.previous = node
@@ -28,8 +28,8 @@ func (list *DoublyLinkedList) addToFront(element interface{}) {
 	list.head = node
 }
 
-func (list *DoublyLinkedList) removeFromFront() *Node {
-	if list.isEmpty() {
+func (list *DoublyLinkedList) RemoveFromFront() *Node {
+	if list.IsEmpty() {
 		return nil
 	}
 	if list.head.next == nil {
@@ -44,9 +44,9 @@ func (list *DoublyLinkedList) removeFromFront() *Node {
 	return removedNode
 }
 
-func (list *DoublyLinkedList) addToEnd(element interface{}) {
-	node := newNode(element)
-	if list.isEmpty() {
+func (list *DoublyLinkedList) AddToEnd(element interface{}) {
+	node := createNode(element)
+	if list.IsEmpty() {
 		list.head = node
 	} else {
 		list.tail.next = node
@@ -56,8 +56,8 @@ func (list *DoublyLinkedList) addToEnd(element interface{}) {
 	list.tail = node
 }
 
-func (list *DoublyLinkedList) removeFromEnd() *Node {
-	if list.isEmpty() {
+func (list *DoublyLinkedList) RemoveFromEnd() *Node {
+	if list.IsEmpty() {
 		return nil
 	}
 	if list.tail.previous == nil {
@@ -72,12 +72,12 @@ func (list *DoublyLinkedList) removeFromEnd() *Node {
 	return removedNode
 }
 
-func (list *DoublyLinkedList) isEmpty() bool {
+func (list *DoublyLinkedList) IsEmpty() bool {
 	return list.head == nil && list.tail == nil
 }
 
-func (list *DoublyLinkedList) toString() {
-	if list.isEmpty() {
+func (list *DoublyLinkedList) ToString() {
+	if list.IsEmpty() {
 		fmt.Println("Linked List is empty.")
 		return
 	}
@@ -89,7 +89,7 @@ func (list *DoublyLinkedList) toString() {
 	fmt.Println("nil")
 }
 
-func (list *DoublyLinkedList) searchFor(element interface{}) (index int,  node *Node) {
+func (list *DoublyLinkedList) SearchFor(element interface{}) (index int,  node *Node) {
 	node = list.head
 	for node.element != element {
 		node = node.next
