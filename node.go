@@ -6,7 +6,7 @@ type Node struct {
 	element  interface{}
 }
 
-func createNode(element interface{}) *Node {
+func NewNode(element interface{}) *Node {
 	node := new(Node)
 	node.element = element
 	return node

@@ -17,7 +17,7 @@ func NewDoublyLinkedList(elements ...interface{}) *DoublyLinkedList {
 }
 
 func (list *DoublyLinkedList) AddToFront(element interface{}) {
-	node := createNode(element)
+	node := NewNode(element)
 	if list.IsEmpty() {
 		list.tail = node
 	} else {
@@ -45,7 +45,7 @@ func (list *DoublyLinkedList) RemoveFromFront() *Node {
 }
 
 func (list *DoublyLinkedList) AddToEnd(element interface{}) {
-	node := createNode(element)
+	node := NewNode(element)
 	if list.IsEmpty() {
 		list.head = node
 	} else {
